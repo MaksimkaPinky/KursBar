@@ -17,6 +17,7 @@ namespace KursBar.EF
         [StringLength(50)]
         public string Пароль { get; set; }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
         public virtual User User { get; set; }

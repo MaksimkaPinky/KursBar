@@ -68,7 +68,7 @@ namespace KursBar
             {
                 USR = UsersFind;
                 FORMA = this;
-                if (USR.User.Роль == "1")
+                if (USR.User.Роль == "Администратор")
                 {
                     FormAdmin frAdmin = new FormAdmin();
                     frAdmin.Show();
