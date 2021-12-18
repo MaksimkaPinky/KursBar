@@ -1,0 +1,295 @@
+USE [master]
+GO
+/****** Object:  Database [KursBar]    Script Date: 18.12.2021 12:57:51 ******/
+CREATE DATABASE [KursBar]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'KursBar', FILENAME = N'D:\SSMS\MSSQL15.SQLEXPRESS\MSSQL\DATA\KursBar.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'KursBar_log', FILENAME = N'D:\SSMS\MSSQL15.SQLEXPRESS\MSSQL\DATA\KursBar_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+ WITH CATALOG_COLLATION = DATABASE_DEFAULT
+GO
+ALTER DATABASE [KursBar] SET COMPATIBILITY_LEVEL = 150
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [KursBar].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [KursBar] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [KursBar] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [KursBar] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [KursBar] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [KursBar] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [KursBar] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [KursBar] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [KursBar] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [KursBar] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [KursBar] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [KursBar] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [KursBar] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [KursBar] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [KursBar] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [KursBar] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [KursBar] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [KursBar] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [KursBar] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [KursBar] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [KursBar] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [KursBar] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [KursBar] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [KursBar] SET RECOVERY SIMPLE 
+GO
+ALTER DATABASE [KursBar] SET  MULTI_USER 
+GO
+ALTER DATABASE [KursBar] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [KursBar] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [KursBar] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [KursBar] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [KursBar] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [KursBar] SET ACCELERATED_DATABASE_RECOVERY = OFF  
+GO
+ALTER DATABASE [KursBar] SET QUERY_STORE = OFF
+GO
+USE [KursBar]
+GO
+/****** Object:  Table [dbo].[Autorization]    Script Date: 18.12.2021 12:57:51 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Autorization](
+	[Логин] [nvarchar](50) NOT NULL,
+	[Пароль] [nvarchar](50) NOT NULL,
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+ CONSTRAINT [PK_Autorization] PRIMARY KEY CLUSTERED 
+(
+	[Логин] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Categorical]    Script Date: 18.12.2021 12:57:51 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Categorical](
+	[ID] [int] NOT NULL,
+	[СтепеньКатегоричности] [int] NULL,
+ CONSTRAINT [PK_Категоричность] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Hardware]    Script Date: 18.12.2021 12:57:51 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Hardware](
+	[ID] [int] NOT NULL,
+	[ID_Ремонт] [int] NULL,
+	[ДатаУстановки] [date] NULL,
+	[ДатаОбследования] [date] NULL,
+ CONSTRAINT [PK_Оборудование] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[IT_Employees]    Script Date: 18.12.2021 12:57:51 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[IT_Employees](
+	[ID] [int] NOT NULL,
+	[ФИО] [nvarchar](50) NULL,
+	[Должность] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Сотрудники ИТ] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Office]    Script Date: 18.12.2021 12:57:51 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Office](
+	[ID] [int] NOT NULL,
+	[Название отдела] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Одел] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Quest]    Script Date: 18.12.2021 12:57:51 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Quest](
+	[ID] [int] NOT NULL,
+	[ID_User] [int] NULL,
+	[Приоритет] [int] NULL,
+	[НомерКабинета] [int] NULL,
+	[ID_ТипПроблемы] [int] NULL,
+	[Филиал] [nvarchar](50) NULL,
+	[ID_Оборудования] [int] NULL,
+	[СрочностьВыполнения] [int] NULL,
+	[ОписаниеПроблемы] [nvarchar](50) NULL,
+	[ДатаПодачи] [date] NULL,
+	[ID_Категоричность] [int] NULL,
+	[ДатаПринятия] [date] NULL,
+	[ДатаЗакрытия] [date] NULL,
+ CONSTRAINT [PK_Quest] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Repair]    Script Date: 18.12.2021 12:57:51 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Repair](
+	[ID] [int] NOT NULL,
+	[ID_Сотрудники_ИТ] [int] NULL,
+	[ДатаПоследнегоРемонта] [date] NULL,
+	[КоличествоРемонтов] [nvarchar](50) NULL,
+	[ПричинаРемонта] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Ремонт] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Role]    Script Date: 18.12.2021 12:57:51 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Role](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[Role] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_Role] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[TypeOfProblem]    Script Date: 18.12.2021 12:57:51 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TypeOfProblem](
+	[ID] [int] NOT NULL,
+	[ТипПроблемы] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Тип проблемы] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[User]    Script Date: 18.12.2021 12:57:51 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[User](
+	[ID] [int] NOT NULL,
+	[ФИО] [nvarchar](50) NULL,
+	[ID_Office] [int] NOT NULL,
+	[Роль] [nvarchar](50) NOT NULL,
+	[Дата_Рождения] [nvarchar](50) NULL,
+	[Почта] [nvarchar](50) NULL,
+	[Пол] [nchar](10) NULL,
+ CONSTRAINT [PK_User_1] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Autorization] ON 
+
+INSERT [dbo].[Autorization] ([Логин], [Пароль], [ID]) VALUES (N'test', N'test12', 1)
+SET IDENTITY_INSERT [dbo].[Autorization] OFF
+GO
+INSERT [dbo].[Office] ([ID], [Название отдела]) VALUES (1, N'test')
+GO
+SET IDENTITY_INSERT [dbo].[Role] ON 
+
+INSERT [dbo].[Role] ([ID], [Role]) VALUES (1, N'Администратор')
+INSERT [dbo].[Role] ([ID], [Role]) VALUES (2, N'Сотрудник ИТ-отдела')
+INSERT [dbo].[Role] ([ID], [Role]) VALUES (3, N'Пользователь')
+SET IDENTITY_INSERT [dbo].[Role] OFF
+GO
+INSERT [dbo].[User] ([ID], [ФИО], [ID_Office], [Роль], [Дата_Рождения], [Почта], [Пол]) VALUES (1, N'Барциц Максим Вячеславович ', 1, N'1', NULL, NULL, N'Ж         ')
+GO
+ALTER TABLE [dbo].[Hardware]  WITH CHECK ADD  CONSTRAINT [FK_Оборудование_Ремонт] FOREIGN KEY([ID_Ремонт])
+REFERENCES [dbo].[Repair] ([ID])
+GO
+ALTER TABLE [dbo].[Hardware] CHECK CONSTRAINT [FK_Оборудование_Ремонт]
+GO
+ALTER TABLE [dbo].[Quest]  WITH CHECK ADD  CONSTRAINT [FK_Quest_User1] FOREIGN KEY([ID_User])
+REFERENCES [dbo].[User] ([ID])
+GO
+ALTER TABLE [dbo].[Quest] CHECK CONSTRAINT [FK_Quest_User1]
+GO
+ALTER TABLE [dbo].[Quest]  WITH CHECK ADD  CONSTRAINT [FK_Заявка_Категоричность] FOREIGN KEY([ID_Категоричность])
+REFERENCES [dbo].[Categorical] ([ID])
+GO
+ALTER TABLE [dbo].[Quest] CHECK CONSTRAINT [FK_Заявка_Категоричность]
+GO
+ALTER TABLE [dbo].[Quest]  WITH CHECK ADD  CONSTRAINT [FK_Заявка_Оборудование] FOREIGN KEY([ID_Оборудования])
+REFERENCES [dbo].[Hardware] ([ID])
+GO
+ALTER TABLE [dbo].[Quest] CHECK CONSTRAINT [FK_Заявка_Оборудование]
+GO
+ALTER TABLE [dbo].[Quest]  WITH CHECK ADD  CONSTRAINT [FK_Заявка_Тип проблемы] FOREIGN KEY([ID_ТипПроблемы])
+REFERENCES [dbo].[TypeOfProblem] ([ID])
+GO
+ALTER TABLE [dbo].[Quest] CHECK CONSTRAINT [FK_Заявка_Тип проблемы]
+GO
+ALTER TABLE [dbo].[Repair]  WITH CHECK ADD  CONSTRAINT [FK_Ремонт_Сотрудники ИТ] FOREIGN KEY([ID_Сотрудники_ИТ])
+REFERENCES [dbo].[IT_Employees] ([ID])
+GO
+ALTER TABLE [dbo].[Repair] CHECK CONSTRAINT [FK_Ремонт_Сотрудники ИТ]
+GO
+USE [master]
+GO
+ALTER DATABASE [KursBar] SET  READ_WRITE 
+GO
