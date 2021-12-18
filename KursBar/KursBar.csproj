@@ -125,6 +125,10 @@
       <DependentUpon>Request.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\KursBar.EF.Office.datasource" />
+    <None Include="Properties\DataSources\KursBar.EF.Quest.datasource" />
+    <None Include="Properties\DataSources\KursBar.EF.Role.datasource" />
+    <None Include="Properties\DataSources\KursBar.EF.User.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -58,7 +58,7 @@ namespace KursBar
 
         private void ButLogin_Click(object sender, EventArgs e)
         {
-            if (textBoxLogin.Text == "" || textBoxPassword.Text == "")
+            if (textBoxPassword.Text == "" || textBoxLogin.Text == "")
             {
                 MessageBox.Show("Введите логин и пароль!");
                 return;
@@ -68,7 +68,7 @@ namespace KursBar
             {
                 USR = UsersFind;
                 FORMA = this;
-                if (USR.User.Роль == "Администратор")
+                if (USR.User.Роль == "1")
                 {
                     FormAdmin frAdmin = new FormAdmin();
                     frAdmin.Show();
