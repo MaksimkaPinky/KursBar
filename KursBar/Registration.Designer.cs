@@ -35,10 +35,10 @@
             System.Windows.Forms.Label iD_OfficeLabel;
             System.Windows.Forms.Label дата_РожденияLabel;
             System.Windows.Forms.Label рольLabel;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Registration));
-            System.Windows.Forms.Label логинLabel;
-            System.Windows.Forms.Label парольLabel;
             System.Windows.Forms.Label label2;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Registration));
+            System.Windows.Forms.Label логинLabel1;
+            System.Windows.Forms.Label парольLabel;
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -52,19 +52,19 @@
             this.дата_РожденияDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.рольComboBox = new System.Windows.Forms.ComboBox();
             this.roleBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.passBox = new System.Windows.Forms.TextBox();
             this.autorizationBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.логинTextBox = new System.Windows.Forms.TextBox();
             this.парольTextBox = new System.Windows.Forms.TextBox();
-            this.passBox = new System.Windows.Forms.TextBox();
             почтаLabel = new System.Windows.Forms.Label();
             фИОLabel = new System.Windows.Forms.Label();
             полLabel = new System.Windows.Forms.Label();
             iD_OfficeLabel = new System.Windows.Forms.Label();
             дата_РожденияLabel = new System.Windows.Forms.Label();
             рольLabel = new System.Windows.Forms.Label();
-            логинLabel = new System.Windows.Forms.Label();
-            парольLabel = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
+            логинLabel1 = new System.Windows.Forms.Label();
+            парольLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
@@ -132,6 +132,16 @@
             рольLabel.TabIndex = 17;
             рольLabel.Text = "Роль:";
             рольLabel.UseWaitCursor = true;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(20, 304);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(207, 25);
+            label2.TabIndex = 19;
+            label2.Text = "Повторите пароль: ";
+            label2.UseWaitCursor = true;
             // 
             // panel1
             // 
@@ -262,72 +272,63 @@
             // 
             this.roleBindingSource.DataSource = typeof(KursBar.EF.Role);
             // 
-            // autorizationBindingSource
-            // 
-            this.autorizationBindingSource.DataMember = "Autorization";
-            this.autorizationBindingSource.DataSource = this.userBindingSource;
-            // 
-            // логинLabel
-            // 
-            логинLabel.AutoSize = true;
-            логинLabel.Location = new System.Drawing.Point(27, 191);
-            логинLabel.Name = "логинLabel";
-            логинLabel.Size = new System.Drawing.Size(77, 25);
-            логинLabel.TabIndex = 18;
-            логинLabel.Text = "Логин:";
-            // 
-            // логинTextBox
-            // 
-            this.логинTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.autorizationBindingSource, "Логин", true));
-            this.логинTextBox.Location = new System.Drawing.Point(254, 191);
-            this.логинTextBox.Name = "логинTextBox";
-            this.логинTextBox.Size = new System.Drawing.Size(121, 31);
-            this.логинTextBox.TabIndex = 19;
-            // 
-            // парольLabel
-            // 
-            парольLabel.AutoSize = true;
-            парольLabel.Location = new System.Drawing.Point(28, 254);
-            парольLabel.Name = "парольLabel";
-            парольLabel.Size = new System.Drawing.Size(92, 25);
-            парольLabel.TabIndex = 19;
-            парольLabel.Text = "Пароль:";
-            // 
-            // парольTextBox
-            // 
-            this.парольTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.autorizationBindingSource, "Пароль", true));
-            this.парольTextBox.Location = new System.Drawing.Point(254, 251);
-            this.парольTextBox.Name = "парольTextBox";
-            this.парольTextBox.Size = new System.Drawing.Size(121, 31);
-            this.парольTextBox.TabIndex = 20;
-            // 
             // passBox
             // 
             this.passBox.Location = new System.Drawing.Point(254, 301);
             this.passBox.Name = "passBox";
             this.passBox.Size = new System.Drawing.Size(121, 31);
             this.passBox.TabIndex = 20;
+            this.passBox.UseWaitCursor = true;
             // 
-            // label2
+            // autorizationBindingSource
             // 
-            label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(28, 304);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(207, 25);
-            label2.TabIndex = 19;
-            label2.Text = "Повторите пароль: ";
+            this.autorizationBindingSource.DataSource = typeof(KursBar.EF.Autorization);
+            // 
+            // логинLabel1
+            // 
+            логинLabel1.AutoSize = true;
+            логинLabel1.Location = new System.Drawing.Point(20, 199);
+            логинLabel1.Name = "логинLabel1";
+            логинLabel1.Size = new System.Drawing.Size(77, 25);
+            логинLabel1.TabIndex = 21;
+            логинLabel1.Text = "Логин:";
+            // 
+            // логинTextBox
+            // 
+            this.логинTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.autorizationBindingSource, "Логин", true));
+            this.логинTextBox.Location = new System.Drawing.Point(275, 196);
+            this.логинTextBox.Name = "логинTextBox";
+            this.логинTextBox.Size = new System.Drawing.Size(100, 31);
+            this.логинTextBox.TabIndex = 22;
+            // 
+            // парольLabel
+            // 
+            парольLabel.AutoSize = true;
+            парольLabel.Location = new System.Drawing.Point(20, 250);
+            парольLabel.Name = "парольLabel";
+            парольLabel.Size = new System.Drawing.Size(92, 25);
+            парольLabel.TabIndex = 22;
+            парольLabel.Text = "Пароль:";
+            // 
+            // парольTextBox
+            // 
+            this.парольTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.autorizationBindingSource, "Пароль", true));
+            this.парольTextBox.Location = new System.Drawing.Point(275, 247);
+            this.парольTextBox.Name = "парольTextBox";
+            this.парольTextBox.Size = new System.Drawing.Size(100, 31);
+            this.парольTextBox.TabIndex = 23;
             // 
             // Registration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(897, 527);
-            this.Controls.Add(label2);
+            this.ClientSize = new System.Drawing.Size(897, 541);
             this.Controls.Add(парольLabel);
-            this.Controls.Add(this.passBox);
             this.Controls.Add(this.парольTextBox);
-            this.Controls.Add(логинLabel);
+            this.Controls.Add(логинLabel1);
             this.Controls.Add(this.логинTextBox);
+            this.Controls.Add(label2);
+            this.Controls.Add(this.passBox);
             this.Controls.Add(рольLabel);
             this.Controls.Add(this.рольComboBox);
             this.Controls.Add(дата_РожденияLabel);
@@ -375,9 +376,9 @@
         private System.Windows.Forms.DateTimePicker дата_РожденияDateTimePicker;
         private System.Windows.Forms.ComboBox рольComboBox;
         private System.Windows.Forms.BindingSource roleBindingSource;
+        private System.Windows.Forms.TextBox passBox;
         private System.Windows.Forms.BindingSource autorizationBindingSource;
         private System.Windows.Forms.TextBox логинTextBox;
         private System.Windows.Forms.TextBox парольTextBox;
-        private System.Windows.Forms.TextBox passBox;
     }
 }

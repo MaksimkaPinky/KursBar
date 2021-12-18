@@ -71,5 +71,10 @@ namespace KursBar
             return;
 
         }
+
+        private void парольTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
